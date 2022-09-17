@@ -30,7 +30,12 @@ The project's functional requirement will be provided in each project case study
 
 Anyone who is interested to improve coding and project development skills can participate in corresponding project case study.
 
-## 🛠 Skills
+## 🛠 Skills you'll learn or get hands-on
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=github,git,java,idea,maven,spring,postgres,aws,jenkins" />
+  </a>
+</p>
 - Java 8/11 - Core Java, Collections, Multithreading, File Processing, Exception Handling...
 - Data Structure and Algorithms with Leetcode Portfolio
 - Spring and SpringBoot - Project/Application Development
