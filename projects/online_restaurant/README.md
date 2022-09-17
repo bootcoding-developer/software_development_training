@@ -12,12 +12,39 @@ Bootcoding want to help students to improve coding skills along with analytical 
 
 
 ## Project Description 
+A real time project case study where we have to provide online restaurant guide and food ordering platform that allows users to order meals from restaurants and have them delivered.
+
 
 ## Functional Requirements
+Actor - Restaurant (Vendor)
+- New restaurants (vendor) should register to our platform (Sign/Signup)
+- Restaurant (Vendor) should add menu items into our platform
+- Vendor should modify/update details of any menu item
+- Vendor should upload multiple images of an menu item
+- Vendor should update price of a menu item
+
+Actor - Customer
+- New customer should register to our platform (Sign/Signup)
+- List all restaurants
+- Search / filter restaurants or Menus
+- Filter for Veg or Non-veg 
+- Quantity of menu items
+
+Actor - Administrator
+- Apply general discounts on meals/menus
+- Apply discount on regular customers
+- Apply seasonal or festival discounts
+- Approve valid Restaurants only
+
+
 
 ## Application Overview
 
+
+
 ## Tasks to be accomplished 
+
+
 ## What you'll learn or get hands-on 
 <p align="center">
   <a href="https://skillicons.dev">
@@ -49,6 +76,7 @@ Coming soon...
 
 ## How to Contribute to the Project
 
+<!--
 <table>
     <tr>
         <th>Inline-diff</th>
@@ -117,3 +145,5 @@ Coming soon...
         <td width="50%"> Squash, edit, move, rebase, undo, redo.</td>
     </tr>
 </table>
+
+-->
