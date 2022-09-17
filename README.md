@@ -36,12 +36,13 @@ Anyone who is interested to improve coding and project development skills can pa
     <img src="https://skillicons.dev/icons?i=github,git,java,idea,maven,spring,postgres,aws,jenkins" />
   </a>
 </p>
-- Java 8/11 - Core Java, Collections, Multithreading, File Processing, Exception Handling...
-- Data Structure and Algorithms with Leetcode Portfolio
-- Spring and SpringBoot - Project/Application Development
-- Hibernate - Project/Application Development
+
+- Java 8/11 - Core Java, Collections, Multithreading, File Processing, Exception Handling... 
+- Data Structure and Algorithms with Leetcode Portfolio 
+- Spring and SpringBoot - Project/Application Development 
+- Hibernate - Project/Application Development 
 - REST API - E2E Development 
-- Agile Methodology - Requirement Gathering, Planning, Analysis...
-- Git and Github Actions - Project Repositories, create branch, Check-in & Check-out, Code Reviews,  merge-conflict...
-- AWS - Basic Awareness
+- Agile Methodology - Requirement Gathering, Planning, Analysis... 
+- Git and Github Actions - Project Repositories, create branch, Check-in & Check-out, Code Reviews,  merge-conflict... 
+- AWS - Basic Awareness 
 - Jenkins - Implementation of jobs, pipelines for automation (ci/cd)
