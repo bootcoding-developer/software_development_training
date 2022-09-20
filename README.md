@@ -1,4 +1,4 @@
-# 🚀 Software Engineer Coding Bootcamp Training Materials
+# 🚀 Bootcoding's Software Engineer Coding Bootcamp Training
 
 An intensive training focused on coding fundamentals, learn industry-standard tools, libraries and applications, and complete multifaceted coding tasks and projects. This course helps you to become Professional by having proficiency on technical skills, soft skills and awareness needed to excel in IT industries.
 
