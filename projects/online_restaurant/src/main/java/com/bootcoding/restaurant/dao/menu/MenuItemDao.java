@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface MenuItemDao {
 
+    public void createTable();
     List<MenuItem> getMenus(String vendorId);
 
     List<MenuItem> getMenusByCategory(String vendorId, boolean veg);
@@ -16,9 +17,8 @@ public interface MenuItemDao {
 
     List<MenuItem> getMenusByCity(String city);
 
-    void addMenuItems(String tableName, List<MenuItem> menuItems);
+    void insertMenuItems(List<MenuItem> menuItems);
 
-
-    void updateMenuItemByDescription(String tableName, String menuItemId, String description);
+    void updateMenuItemByDescription(String menuItemId, String description);
 
 }

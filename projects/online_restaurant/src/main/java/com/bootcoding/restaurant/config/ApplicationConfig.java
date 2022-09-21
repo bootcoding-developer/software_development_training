@@ -4,6 +4,7 @@ import com.bootcoding.restaurant.common.DefaultConfiguration;
 import com.bootcoding.restaurant.common.EnvironmentProfile;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -67,6 +68,12 @@ public class ApplicationConfig {
     @ConfigurationProperties(prefix = "bootcoding.datasource")
     public DataSource bootCodingDataSource() {
         return DataSourceBuilder.create().build();
+    }
+
+
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
     }
 
 }

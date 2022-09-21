@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface VendorDao {
 
+    public void createTable();
+
     List<Vendor> getVendors();
 
     void insertVendors(List<Vendor> vendors, String tableName);

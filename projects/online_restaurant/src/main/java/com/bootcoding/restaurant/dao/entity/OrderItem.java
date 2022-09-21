@@ -2,25 +2,23 @@ package com.bootcoding.restaurant.dao.entity;
 
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
+import lombok.ToString;
 
 /**
  * @author bootcoding on 18/09/22
  * @project software_development_training
  */
-
 @Builder
 @Data
-public class MenuItem {
-
+@ToString
+public class OrderItem {
     private long id;
-    private String name;
-    private boolean veg;
-    private long categoryId;
-    private double price;
-    private String description;
-    private String category;
-    private List<String> images;
+    private long orderId;
     private long vendorId;
+    private String itemName;
+    private String menuCategory;
+    private String description;
+    private boolean veg;
+    private int quantity;
+    private double price;
 }

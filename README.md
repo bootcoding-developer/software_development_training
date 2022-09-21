@@ -13,7 +13,7 @@ An intensive training focused on coding fundamentals, learn industry-standard to
 - Help students to get the job in IT Industry
   - Build digital CV
     - Actively maintain your project(s) on Github repositories.
-    - Participate in Github's open projects if possible
+    - Participate in Github's open source projects if possible
     - Add your work and achievements on LinkedIn Profile
     - Keep updated CV to your Google Drive and attached it to LinkedIn Profile
   - Keep solving Coding Challenges on Competitive Programming Platforms Leetcode, Codeforces etc...

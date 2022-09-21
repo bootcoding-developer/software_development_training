@@ -1,6 +1,7 @@
 package com.bootcoding.restaurant.dao.factory;
 
 import com.bootcoding.restaurant.common.DatabaseConfiguration;
+import com.bootcoding.restaurant.common.DefaultConfiguration;
 import com.bootcoding.restaurant.dao.category.CategoryDao;
 import com.bootcoding.restaurant.dao.category.CategoryDaoImpl;
 import com.bootcoding.restaurant.dao.menu.MenuItemDao;
@@ -28,23 +29,23 @@ public class DaoFactory {
         return daoFactory;
     }
 
-    public VendorDao getVendorDao(DatabaseConfiguration databaseConfiguration) {
+    public VendorDao getVendorDao(DatabaseConfiguration databaseConfiguration, DefaultConfiguration defaultConfiguration) {
         if (vendorDao == null) {
-            vendorDao = new VendorDaoImpl(databaseConfiguration);
+            vendorDao = new VendorDaoImpl(databaseConfiguration, defaultConfiguration);
         }
         return vendorDao;
     }
 
-    public MenuItemDao getMenuItemDao(DatabaseConfiguration databaseConfiguration) {
+    public MenuItemDao getMenuItemDao(DatabaseConfiguration databaseConfiguration, DefaultConfiguration defaultConfiguration) {
         if (menuItemDao == null) {
-            menuItemDao = new MenuItemDaoImpl(databaseConfiguration);
+            menuItemDao = new MenuItemDaoImpl(databaseConfiguration, defaultConfiguration);
         }
         return menuItemDao;
     }
 
-    public CategoryDao getCategoryDao(DatabaseConfiguration databaseConfiguration) {
+    public CategoryDao getCategoryDao(DatabaseConfiguration databaseConfiguration, DefaultConfiguration defaultConfiguration) {
         if (categoryDao == null) {
-            categoryDao = new CategoryDaoImpl(databaseConfiguration);
+            categoryDao = new CategoryDaoImpl(databaseConfiguration, defaultConfiguration);
         }
         return categoryDao;
     }

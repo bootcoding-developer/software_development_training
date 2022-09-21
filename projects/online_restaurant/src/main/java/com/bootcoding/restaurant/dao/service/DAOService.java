@@ -41,16 +41,16 @@ public class DAOService {
     }
 
     public VendorDao getVendorDao() {
-        return daoFactory.getVendorDao(this.databaseConfiguration);
+        return daoFactory.getVendorDao(this.databaseConfiguration, this.defaultConfiguration);
     }
 
     public CategoryDao getCategoryDao() {
-        return daoFactory.getCategoryDao(databaseConfiguration);
+        return daoFactory.getCategoryDao(databaseConfiguration, this.defaultConfiguration);
 
     }
 
     public MenuItemDao getMenuItemDao() {
-        return daoFactory.getMenuItemDao(databaseConfiguration);
+        return daoFactory.getMenuItemDao(databaseConfiguration, this.defaultConfiguration);
     }
 
 

@@ -3,8 +3,9 @@ package com.bootcoding.restaurant;
 import com.bootcoding.restaurant.common.CategoryEnum;
 import com.bootcoding.restaurant.common.DefaultConfiguration;
 import com.bootcoding.restaurant.dao.entity.Vendor;
-import com.bootcoding.restaurant.service.VendorService;
+import com.bootcoding.restaurant.service.vendor.VendorService;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,8 +30,10 @@ public class OnlineRestaurantApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        vendorService.createTable();
         log.info("Online Restaurant Application is started ...");
+
+
 
     }
 

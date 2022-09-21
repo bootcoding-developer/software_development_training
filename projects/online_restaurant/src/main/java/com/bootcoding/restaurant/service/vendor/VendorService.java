@@ -1,4 +1,4 @@
-package com.bootcoding.restaurant.service;
+package com.bootcoding.restaurant.service.vendor;
 
 import com.bootcoding.restaurant.common.dto.VendorDTO;
 import com.bootcoding.restaurant.config.ApplicationConfig;
@@ -39,6 +39,10 @@ public class VendorService {
         vendorDao.insertVendors(vendorEntities, getTableName());
     }
 
+    public void createTable(){
+        VendorDao vendorDao = daoService.getVendorDao();
+        vendorDao.createTable();
+    }
     public void registerVendor(VendorDTO vendorDTO) throws VendorServiceException {
         Vendor vendor = convertToVendorEntity(vendorDTO);
         VendorDao vendorDao = daoService.getVendorDao();

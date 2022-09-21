@@ -20,11 +20,13 @@ public class DefaultConfiguration {
     private final EnvironmentProfile environmentProfile;
 
     private final String vendorMetaTable;
+    private final String vendorMenuTable;
     private final String categoryTable;
     private final String restaurantSchema;
     private final String restaurantMenuTable;
 
     private final String orderTable;
+    private final String orderMenuTable;
     private final String orderHistoryTable;
 
 

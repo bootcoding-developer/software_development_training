@@ -7,10 +7,6 @@
 ![License] 
 -->
 
-## Objective 
-Bootcoding want to help students to improve coding skills along with analytical and problem-solving abilities which is essential for a Software Engineer role.
-
-
 ## Project Description 
 A real time project case study where we have to provide online restaurant guide and food ordering platform that allows users to order meals from restaurants and have them delivered.
 
