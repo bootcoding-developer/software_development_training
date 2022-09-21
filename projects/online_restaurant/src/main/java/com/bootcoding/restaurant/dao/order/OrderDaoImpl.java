@@ -86,20 +86,4 @@ public class OrderDaoImpl implements OrderDao{
 
     }
 
-    public static void main(String args[])
-    {
-        int index, count, n = 5;
-        for (index=0; index<n; index++)
-        {
-            for (count=0; count<=index; count++ )
-            {
-                System.out.print("* ");
-            }
-            for (count=2*(n-index); count>=0; count--)
-            {
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
-    }
 }
