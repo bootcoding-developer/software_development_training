@@ -36,6 +36,7 @@ public class VendorService {
     public void registerVendor(List<VendorDTO> vendors) throws VendorServiceException {
         List<Vendor> vendorEntities = convertToVendorEntities(vendors);
         VendorDao vendorDao = daoService.getVendorDao();
+        vendorDao.createTable();
         vendorDao.insertVendors(vendorEntities, getTableName());
     }
 
