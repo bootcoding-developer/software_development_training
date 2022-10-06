@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class DBUtils {
 
+    public static final String BOOTCODING_SCHEMA = "bootcoding";
     public static String buildAndGetInsertQuery(String vendorTableName, String[] cols) {
 
         final List<String> placeHolders =  buildPlaceHolderList(cols);
@@ -34,5 +35,9 @@ public class DBUtils {
 
     public static Timestamp getTimestamp(Date date) {
         return new Timestamp(date.getTime());
+    }
+
+    public static String withSchema(String tableName) {
+        return BOOTCODING_SCHEMA + "." + tableName;
     }
 }

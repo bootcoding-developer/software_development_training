@@ -30,24 +30,25 @@ public class VendorDaoImpl implements VendorDao {
     public void createTable() {
         String username = defaultConfiguration.getDbUsername();
         String tableName = defaultConfiguration.getVendorMetaTable();
+        String tableNameWithSchema = DBUtils.withSchema(tableName);
         StringBuilder query = new StringBuilder();
 
-        query.append(Constants.CREATE_TABLE_IF_NOT_EXISTS).append(" ( ")
+        query.append(Constants.CREATE_TABLE_IF_NOT_EXISTS).append(tableNameWithSchema).append(" ( ")
                 .append("id bigint NOT NULL GENERATED ALWAYS AS IDENTITY (INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999999 CACHE 1),")
-                .append("restaurant_name character varying(200) COLLATE pg_catalog.\"default\",")
-                .append("category character varying(200) COLLATE pg_catalog.\"default\",")
-                .append("state character varying(200) COLLATE pg_catalog.\"default\",")
-                .append("city character varying(200) COLLATE pg_catalog.\"default\",")
-                .append("address character varying(2000) COLLATE pg_catalog.\"default\",")
-                .append("registration_date timestamp COLLATE pg_catalog.\"default\",")
-                .append("modified_date timestamp COLLATE pg_catalog.\"default\",")
-                .append("approved boolean COLLATE pg_catalog.\"default\",")
+                .append("restaurant_name character varying(200) ,")
+                .append("category character varying(200) ,")
+                .append("state character varying(200) ,")
+                .append("city character varying(200) ,")
+                .append("address character varying(2000) ,")
+                .append("registration_date timestamp ,")
+                .append("modified_date timestamp ,")
+                .append("approved boolean ,")
                 .append("latitude numeric,")
-                .append("longitude numeric")
-                .append("CONSTRAINT ").append(tableName).append("_pkey PRIMARY KEY (id)")
-                .append(") WITH (OIDS = FALSE) TABLESPACE pg_default;")
-                .append(" ALTER TABLE ").append(tableName).append(" OWNER to ").append(username).append(";")
-                .append(" grant select on ").append(tableName).append(" to postgres;");
+                .append("longitude numeric, ")
+                .append(" CONSTRAINT ").append(tableName).append("_pkey PRIMARY KEY (id)")
+                .append(") ;")
+                .append(" ALTER TABLE ").append(tableNameWithSchema).append(" OWNER to ").append(username).append(";")
+                .append(" grant select on ").append(tableNameWithSchema).append(" to postgres;");
 
 
         databaseConfiguration.getJdbcTemplate().execute(query.toString());
@@ -62,7 +63,7 @@ public class VendorDaoImpl implements VendorDao {
     @Override
     public void insertVendors(List<Vendor> vendors, String vendorTableName) {
         this.databaseConfiguration.getJdbcTemplate()
-            .batchUpdate(DBUtils.buildAndGetInsertQuery(vendorTableName,TableHeaders.VENDOR_TABLE_COLS),
+            .batchUpdate(DBUtils.buildAndGetInsertQuery(DBUtils.withSchema(vendorTableName),TableHeaders.VENDOR_TABLE_COLS),
             new BatchPreparedStatementSetter() {
                 @Override
                 public void setValues(PreparedStatement ps, int index) throws SQLException {
