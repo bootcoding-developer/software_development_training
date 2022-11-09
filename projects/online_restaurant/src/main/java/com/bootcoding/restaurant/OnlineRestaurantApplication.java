@@ -32,9 +32,6 @@ public class OnlineRestaurantApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         vendorService.createTable();
         log.info("Online Restaurant Application is started ...");
-
-
-
     }
 
     private List<Vendor> buildVendors() {

@@ -6,15 +6,14 @@ import com.bootcoding.restaurant.common.DefaultConfiguration;
 import com.bootcoding.restaurant.common.TableHeaders;
 import com.bootcoding.restaurant.dao.entity.Vendor;
 import com.bootcoding.restaurant.utils.DBUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Slf4j
 public class VendorDaoImpl implements VendorDao {
 
     private final DatabaseConfiguration databaseConfiguration;
@@ -54,7 +53,6 @@ public class VendorDaoImpl implements VendorDao {
         databaseConfiguration.getJdbcTemplate().execute(query.toString());
 
     }
-
     @Override
     public List<Vendor> getVendors() {
         return null;
@@ -62,12 +60,13 @@ public class VendorDaoImpl implements VendorDao {
 
     @Override
     public void insertVendors(List<Vendor> vendors, String vendorTableName) {
+        List<Vendor> newVendors = provideNonExistsVendors(vendors,vendorTableName);
         this.databaseConfiguration.getJdbcTemplate()
             .batchUpdate(DBUtils.buildAndGetInsertQuery(DBUtils.withSchema(vendorTableName),TableHeaders.VENDOR_TABLE_COLS),
             new BatchPreparedStatementSetter() {
                 @Override
                 public void setValues(PreparedStatement ps, int index) throws SQLException {
-                    Vendor vendor = vendors.get(index);
+                    Vendor vendor = newVendors.get(index);
                     int parameterIndex = 1;
                     ps.setString(parameterIndex++, vendor.getName());
                     ps.setString(parameterIndex++, vendor.getCategory().name());
@@ -79,20 +78,38 @@ public class VendorDaoImpl implements VendorDao {
                     ps.setBoolean(parameterIndex++, vendor.isApproved());
                     ps.setDouble(parameterIndex++, vendor.getLatitude());
                     ps.setDouble(parameterIndex, vendor.getLongitude());
-
                 }
-
                 @Override
                 public int getBatchSize() {
-                    return vendors.size();
+                    return newVendors.size();
                 }
             });
     }
 
-    @Override
-    public boolean existsVendor(Vendor vendor) {
+    private List<Vendor> provideNonExistsVendors(List<Vendor> vendors, String vendorTableName) {
+        return vendors.stream().filter(vendor -> !existsVendor(vendor, vendorTableName)).collect(Collectors.toList());
+    }
+
+
+    public boolean existsVendor(Vendor vendor, String vendorTableName) {
+
+        // Select * from vendor where restaurant_name = vendor.getName();
+        try{
+            Connection con = databaseConfiguration.getJdbcTemplate().getDataSource().getConnection();
+            Statement stmt = con.createStatement();
+            String sql ="select * from bootcoding."+ vendorTableName + " where restaurant_name = '" +vendor.getName()+"'";
+            System.out.println(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                log.info("Existing restaurant - "+vendor.getName());
+                return true;
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return false;
     }
+
 
     @Override
     public void updateVendorCategory(List<Vendor> vendors) {

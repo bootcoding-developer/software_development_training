@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/v1")
@@ -28,12 +30,16 @@ public class VendorController {
     public ResponseEntity<Response> registerVendor(@RequestBody VendorRequest vendorRequest) {
         Response response;
         try {
-
             vendorService.registerVendor(vendorRequest.getVendors());
             response = new Response();
+            response.setStatus("SUCCESS");
+            response.setMessage("Your restaurant account has been registered successfully");
+            response.setRequestId(UUID.randomUUID().toString());
+
         } catch (VendorServiceException ve) {
             log.error("Error while registering vendor : {}", ve.getMessage(), ve);
             response = new Response();
+
         }
         return ResponseEntity.ok(response);
     }

@@ -33,7 +33,6 @@ public class DBUtils {
         return placeHolders;
     }
 
-
     public static Timestamp getTimestamp(Date date) {
         return new Timestamp(date.getTime());
     }

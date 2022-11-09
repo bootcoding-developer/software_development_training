@@ -12,7 +12,7 @@ public interface VendorDao {
 
     void insertVendors(List<Vendor> vendors, String tableName);
 
-    boolean existsVendor(Vendor vendor);
+    boolean existsVendor(Vendor vendor,String tableName);
 
     void updateVendorCategory(List<Vendor> vendors);
 
