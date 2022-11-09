@@ -63,5 +63,8 @@ public class VendorService {
         return modelMapper.map(vendorDTO, Vendor.class);
     }
 
-
+    public List<Vendor> getAllVendors() {
+        VendorDao vendorDao = daoService.getVendorDao();
+        return vendorDao.getAllVendors();
+    }
 }

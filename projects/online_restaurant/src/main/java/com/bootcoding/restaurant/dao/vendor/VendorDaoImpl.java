@@ -7,14 +7,18 @@ import com.bootcoding.restaurant.common.TableHeaders;
 import com.bootcoding.restaurant.dao.entity.Vendor;
 import com.bootcoding.restaurant.utils.DBUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.SessionFactory;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 public class VendorDaoImpl implements VendorDao {
+
+    private SessionFactory sessionFactory;
 
     private final DatabaseConfiguration databaseConfiguration;
     private final DefaultConfiguration defaultConfiguration;
@@ -48,15 +52,10 @@ public class VendorDaoImpl implements VendorDao {
                 .append(") ;")
                 .append(" ALTER TABLE ").append(tableNameWithSchema).append(" OWNER to ").append(username).append(";")
                 .append(" grant select on ").append(tableNameWithSchema).append(" to postgres;");
-
-
         databaseConfiguration.getJdbcTemplate().execute(query.toString());
+    }
 
-    }
-    @Override
-    public List<Vendor> getVendors() {
-        return null;
-    }
+
 
     @Override
     public void insertVendors(List<Vendor> vendors, String vendorTableName) {
@@ -90,9 +89,7 @@ public class VendorDaoImpl implements VendorDao {
         return vendors.stream().filter(vendor -> !existsVendor(vendor, vendorTableName)).collect(Collectors.toList());
     }
 
-
     public boolean existsVendor(Vendor vendor, String vendorTableName) {
-
         // Select * from vendor where restaurant_name = vendor.getName();
         try{
             Connection con = databaseConfiguration.getJdbcTemplate().getDataSource().getConnection();
@@ -110,11 +107,32 @@ public class VendorDaoImpl implements VendorDao {
         return false;
     }
 
-
+    public List<Vendor> getAllVendors() {
+        ArrayList<Vendor> vendors = new ArrayList<>();
+        try {
+            Connection con = databaseConfiguration.getJdbcTemplate().getDataSource().getConnection();
+            Statement stmt = con.createStatement();
+            //stmt.executeQuery("select * from bootcoding.vendor");
+            ResultSet resultSet = stmt.executeQuery("select * from bootcoding.vendor");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String restaurant_name = resultSet.getString("restaurant_name");
+                Vendor vendor = new Vendor();
+                vendor.setName(restaurant_name);
+                vendor.setId(id);
+                vendors.add(vendor);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return vendors;
+        //return sessionFactory.getCurrentSession().createQuery("select * from bootcoding.vendor").list();
+    }
     @Override
     public void updateVendorCategory(List<Vendor> vendors) {
 
     }
+
 
     @Override
     public void updateVendorName(List<Vendor> vendors) {
