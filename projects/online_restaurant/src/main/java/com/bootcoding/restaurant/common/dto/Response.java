@@ -10,7 +10,6 @@ public class Response {
     private String status;
     private String message;
     private String requestId;
-
-
+    private Object data;
 
 }

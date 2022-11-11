@@ -1,15 +1,15 @@
 package com.bootcoding.restaurant.dao.entity;
 
 import com.bootcoding.restaurant.common.CategoryEnum;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
 @Builder
 @Data
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Vendor {
 
     private long id;

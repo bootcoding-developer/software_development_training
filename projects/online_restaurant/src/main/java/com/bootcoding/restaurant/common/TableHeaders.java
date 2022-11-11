@@ -3,7 +3,7 @@ package com.bootcoding.restaurant.common;
 public class TableHeaders {
 
     public static final String[] VENDOR_TABLE_COLS = {
-            "name", "category", "state", "city", "address", "registration_date", "modified_date", "approved",
+            "restaurant_name", "category", "state", "city", "address", "registration_date", "modified_date", "approved",
             "latitude", "longitude"
     };
     public static final String[] ORDER_TABLE_COLS = {

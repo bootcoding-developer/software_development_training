@@ -51,9 +51,8 @@ public class VendorService {
     }
 
     private String getTableName() {
-        return applicationConfig.defaultConfiguration().getRestaurantSchema() + "." + applicationConfig.defaultConfiguration().getVendorMetaTable();
+        return  applicationConfig.defaultConfiguration().getVendorMetaTable();
     }
-
 
     private List<Vendor> convertToVendorEntities(List<VendorDTO> vendors) throws VendorServiceException {
         return vendors.stream().map(req -> modelMapper.map(req, Vendor.class)).collect(Collectors.toList());
@@ -64,5 +63,8 @@ public class VendorService {
         return modelMapper.map(vendorDTO, Vendor.class);
     }
 
-
+    public List<Vendor> getAllVendors() {
+        VendorDao vendorDao = daoService.getVendorDao();
+        return vendorDao.getAllVendors();
+    }
 }
